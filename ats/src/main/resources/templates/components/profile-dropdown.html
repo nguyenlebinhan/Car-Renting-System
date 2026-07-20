@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+  <body>
+    <div class="dropdown" th:fragment="customerProfileDropdown(displayName)">
+      <button
+        class="btn user-menu-button dropdown-toggle d-flex align-items-center gap-2"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <span class="user-avatar"><i class="bi bi-person-fill"></i></span>
+        <span class="d-none d-sm-block text-start overflow-hidden">
+          <span class="d-block fw-semibold text-truncate" th:text="${displayName}">Khách hàng</span>
+          <small class="d-block text-muted">Tài khoản khách hàng</small>
+        </span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end border-0 shadow mt-2">
+        <li>
+          <a class="dropdown-item py-2" th:href="@{/v1/customer/profile}">
+            <i class="bi bi-person-circle me-2 text-primary"></i>
+            Hồ sơ cá nhân
+          </a>
+        </li>
+        <li><hr class="dropdown-divider" /></li>
+        <li>
+          <form th:action="@{/v1/auth/logout}" method="post">
+            <button class="dropdown-item py-2 text-danger" type="submit">
+              <i class="bi bi-box-arrow-right me-2"></i>
+              Đăng xuất
+            </button>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

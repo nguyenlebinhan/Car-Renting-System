@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="customerNavbar(activePage, displayName)">
+      <div class="container">
+        <a class="navbar-brand" th:href="@{/v1/customer/dashboard}">FU Car Renting</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#customerNavbar"
+          aria-controls="customerNavbar"
+          aria-expanded="false"
+          aria-label="Mở menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="customerNavbar">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                th:classappend="${activePage == 'dashboard'} ? 'active'"
+                th:href="@{/v1/customer/dashboard}"
+              >
+                Trang chủ
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                th:classappend="${activePage == 'cars'} ? 'active'"
+                th:href="@{/v1/customer/car/list}"
+              >
+                Danh sách xe
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                th:classappend="${activePage == 'history'} ? 'active'"
+                th:href="@{/v1/customer/rentals/history}"
+              >
+                Lịch sử giao dịch
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                th:classappend="${activePage == 'reviews'} ? 'active'"
+                th:href="@{/v1/customer/reviews}"
+              >
+                Đánh giá
+              </a>
+            </li>
+          </ul>
+          <div class="d-lg-flex align-items-center gap-2">
+            <span class="navbar-text me-2" th:text="${displayName}">Khách hàng</span>
+            <a class="btn btn-outline-light btn-sm me-2" th:href="@{/v1/customer/profile}">Hồ sơ</a>
+            <form class="d-inline" method="post" th:action="@{/v1/auth/logout}">
+              <button class="btn btn-outline-light btn-sm" type="submit">Đăng xuất</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </body>
+</html>

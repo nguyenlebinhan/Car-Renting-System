@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+  <body>
+    <th:block th:fragment="customerSidebar(activePage)">
+      <aside class="col-lg-2 sidebar d-none d-lg-block">
+        <div class="sidebar-content">
+          <a class="brand" th:href="@{/v1/customer/dashboard}">
+            <span class="brand-icon">
+              <i class="bi bi-car-front-fill"></i>
+            </span>
+            <span>
+              <span class="brand-title d-block">FU Car Renting</span>
+              <span class="brand-subtitle d-block">Customer Portal</span>
+            </span>
+          </a>
+          <p class="sidebar-label">Điều hướng</p>
+          <nav class="nav flex-column">
+            <a
+              class="nav-link"
+              th:classappend="${activePage=='dashboard'}?'active'"
+              th:href="@{/v1/customer/dashboard}"
+            >
+              <i class="bi bi-grid-1x2-fill"></i>
+              <span>Trang chủ</span>
+            </a>
+            <a class="nav-link" th:classappend="${activePage=='cars'}?'active'" th:href="@{/v1/customer/car/list}">
+              <i class="bi bi-car-front-fill"></i>
+              <span>Danh sách xe</span>
+            </a>
+            <a
+              class="nav-link"
+              th:classappend="${activePage=='history'}?'active'"
+              th:href="@{/v1/customer/rentals/history}"
+            >
+              <i class="bi bi-clock-history"></i>
+              <span>Lịch sử giao dịch</span>
+            </a>
+            <a class="nav-link" th:classappend="${activePage=='profile'}?'active'" th:href="@{/v1/customer/profile}">
+              <i class="bi bi-person-circle"></i>
+              <span>Hồ sơ cá nhân</span>
+            </a>
+          </nav>
+        </div>
+      </aside>
+    </th:block>
+    <th:block th:fragment="customerMobileNavigation(activePage)">
+      <div class="mobile-bar d-flex d-lg-none align-items-center justify-content-between p-2 mb-3">
+        <a class="mobile-brand" th:href="@{/v1/customer/dashboard}">
+          <span class="mobile-brand-icon"><i class="bi bi-car-front-fill"></i></span>
+          <span>FU Car Renting</span>
+        </a>
+        <button
+          class="btn btn-light border"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#customerNavigation"
+          aria-controls="customerNavigation"
+          aria-label="Mở menu điều hướng"
+        >
+          <i class="bi bi-list fs-5"></i>
+        </button>
+      </div>
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="customerNavigation">
+        <div class="offcanvas-header">
+          <div class="d-flex align-items-center gap-2">
+            <span class="brand-icon"><i class="bi bi-car-front-fill"></i></span>
+            <div>
+              <h2 class="offcanvas-title fs-6 mb-0">FU Car Renting</h2>
+              <small class="brand-subtitle">Customer Portal</small>
+            </div>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Đóng menu"></button>
+        </div>
+        <div class="offcanvas-body">
+          <nav class="nav flex-column">
+            <a
+              class="nav-link"
+              th:classappend="${activePage=='dashboard'}?'active'"
+              th:href="@{/v1/customer/dashboard}"
+            >
+              <i class="bi bi-grid-1x2-fill"></i>
+              <span>Trang chủ</span>
+            </a>
+            <a class="nav-link" th:classappend="${activePage=='cars'}?'active'" th:href="@{/v1/customer/car/list}">
+              <i class="bi bi-car-front-fill"></i>
+              <span>Danh sách xe</span>
+            </a>
+            <a
+              class="nav-link"
+              th:classappend="${activePage=='history'}?'active'"
+              th:href="@{/v1/customer/rentals/history}"
+            >
+              <i class="bi bi-clock-history"></i>
+              <span>Lịch sử giao dịch</span>
+            </a>
+            <a class="nav-link" th:classappend="${activePage=='profile'}?'active'" th:href="@{/v1/customer/profile}">
+              <i class="bi bi-person-circle"></i>
+              <span>Hồ sơ cá nhân</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </th:block>
+  </body>
+</html>
